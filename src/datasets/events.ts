@@ -1,93 +1,12 @@
-module.exports = [
-    {
-        "id": 1,
-        "name": "parturient montes nascetur ridiculus",
-        "description": "nisl duis ac nibh fusce lacus purus aliquet",
-        "datetime": "2020-05-17T13:49:10Z",
-        "duration": 120,
-        "place": "8569 Mallard Terrace",
-        "isBlocker": true,
-        "owner": "lgeaves0@unc.edu"
-    }, {
-        "id": 2,
-        "name": "sed accumsan felis",
-        "description": "vel pede morbi porttitor lorem id",
-        "datetime": "2020-06-24T15:42:52Z",
-        "duration": 60,
-        "place": "96 Esker Pass",
-        "isBlocker": false,
-        "owner": "siles1@unc.edu"
-    }, {
-        "id": 3,
-        "name": "suscipit a",
-        "description": "non pretium quis lectus suspendisse potenti in eleifend quam a",
-        "datetime": "2020-06-15T09:56:14Z",
-        "duration": 180,
-        "place": "324 Reindahl Road",
-        "isBlocker": false,
-        "owner": "ggueny2@shop-pro.jp"
-    }, {
-        "id": 4,
-        "name": "aliquam erat volutpat in",
-        "description": "congue etiam justo etiam pretium iaculis justo",
-        "datetime": "2020-06-19T09:24:12Z",
-        "duration": 120,
-        "place": "6954 Helena Junction",
-        "isBlocker": false,
-        "owner": "rkenway3@yahoo.com"
-    }, {
-        "id": 5,
-        "name": "lobortis sapien",
-        "description": "vitae nisl aenean lectus pellentesque eget nunc",
-        "datetime": "2020-05-16T05:08:48Z",
-        "duration": 120,
-        "place": "85 Mandrake Terrace",
-        "isBlocker": false,
-        "owner": "mgonsalvez4@admin.ch"
-    }, {
-        "id": 6,
-        "name": "in tempor turpis",
-        "description": "est congue elementum in hac habitasse",
-        "datetime": "2020-06-22T23:03:35Z",
-        "duration": 180,
-        "place": "96122 Division Court",
-        "isBlocker": false,
-        "owner": "rtandy5@yellowpages.com"
-    }, {
-        "id": 7,
-        "name": "turpis enim blandit mi",
-        "description": "lorem vitae mattis nibh ligula nec sem duis aliquam",
-        "datetime": "2020-06-15T07:39:46Z",
-        "duration": 240,
-        "place": "8965 Jay Pass",
-        "isBlocker": false,
-        "owner": "mdalgetty6@weebly.com"
-    }, {
-        "id": 8,
-        "name": "rhoncus dui vel sem sed",
-        "description": "nullam molestie nibh in lectus pellentesque at",
-        "datetime": "2020-05-14T18:53:29Z",
-        "duration": 120,
-        "place": "16284 Bobwhite Avenue",
-        "isBlocker": true,
-        "owner": "ggulk7@dot.gov"
-    }, {
-        "id": 9,
-        "name": "eleifend donec ut dolor",
-        "description": "condimentum id luctus nec molestie sed justo pellentesque viverra pede",
-        "datetime": "2020-06-23T12:31:36Z",
-        "duration": 120,
-        "place": "25 Vernon Point",
-        "isBlocker": true,
-        "owner": "eacton8@tinyurl.com"
-    }, {
-        "id": 10,
-        "name": "curabitur gravida",
-        "description": "condimentum curabitur in libero ut massa",
-        "datetime": "2020-06-15T06:14:25Z",
-        "duration": 240,
-        "place": "0000 Dorton Parkway",
-        "isBlocker": false,
-        "owner": "jharly9@unicef.org"
-    }
-]
+module.exports = (`
+    insert into event (entertainer_id, name, description, datetime, duration, place, isOwner, isBlocker) values (6, 'augue a', 'odio donec vitae nisi nam ultrices libero non', '2020-06-12T10:11:52Z', 120, '52 Susan Circle', true, true);
+    insert into event (entertainer_id, name, description, datetime, duration, place, isOwner, isBlocker) values (7, 'aliquam erat volutpat in', 'faucibus orci luctus et ultrices posuere cubilia', '2020-06-19T00:47:09Z', 60, '79624 Meadow Valley Circle', true, true);
+    insert into event (entertainer_id, name, description, datetime, duration, place, isOwner, isBlocker) values (9, 'cursus id turpis integer aliquet', 'eget rutrum at lorem integer tincidunt ante vel ipsum praesent', '2020-06-05T00:08:04Z', 180, '92537 Muir Lane', true, false);
+    insert into event (entertainer_id, name, description, datetime, duration, place, isOwner, isBlocker) values (5, 'augue a suscipit', 'turpis adipiscing lorem vitae mattis nibh ligula nec sem', '2020-05-09T15:23:23Z', 60, '4 Village Green Trail', false, true);
+    insert into event (entertainer_id, name, description, datetime, duration, place, isOwner, isBlocker) values (10, 'est et tempus semper est', 'hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc', '2020-05-28T10:01:22Z', 120, '613 Red Cloud Way', false, true);
+    insert into event (entertainer_id, name, description, datetime, duration, place, isOwner, isBlocker) values (10, 'ultrices libero non', 'mauris non ligula pellentesque ultrices phasellus id sapien in', '2020-06-21T19:58:19Z', 120, '1 Myrtle Circle', false, true);
+    insert into event (entertainer_id, name, description, datetime, duration, place, isOwner, isBlocker) values (5, 'porttitor pede', 'et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum', '2020-05-12T03:13:32Z', 240, '07021 8th Drive', true, true);
+    insert into event (entertainer_id, name, description, datetime, duration, place, isOwner, isBlocker) values (6, 'tellus semper interdum', 'cum sociis natoque penatibus et magnis dis parturient montes', '2020-06-15T13:55:33Z', 120, '99967 Longview Lane', false, true);
+    insert into event (entertainer_id, name, description, datetime, duration, place, isOwner, isBlocker) values (6, 'purus phasellus in', 'pede malesuada in imperdiet et commodo', '2020-06-08T16:34:26Z', 180, '3671 Rockefeller Alley', true, false);
+    insert into event (entertainer_id, name, description, datetime, duration, place, isOwner, isBlocker) values (7, 'adipiscing molestie hendrerit at vulputate', 'tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae', '2020-05-01T01:19:03Z', 120, '873 Dayton Pass', true, false);
+`)
