@@ -39,6 +39,9 @@ export class EntertainerQuery {
         );
     }
 
+    static async listCategories(): Promise<any> {
+        return knex.raw(`select distinct category from ${this.entertainerTable};`);
+    }
 }
 
 export class CustomerQuery {
