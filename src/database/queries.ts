@@ -54,3 +54,14 @@ export class CustomerQuery {
         );
     }
 }
+
+export class EventQuery {
+    private static eventTable = 'event';
+
+    static async create(entertainerId: string, event: Event): Promise<any> {
+        return knex.raw(`
+            insert into ${this.eventTable} (entertainer_id, name, description, datetime, duration, place, isBlocker, isOwner)
+                values (${entertainerId}, :name, :description, :dateTime, :duration, :place, :isBlocker, :isOwner);`, event as any
+        );
+    }
+}
