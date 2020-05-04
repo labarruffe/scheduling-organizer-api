@@ -34,6 +34,10 @@ Project based on Nodejs.
 
 ## Debug project on network mode
 `npm run debug-net`
+
+# Entities diagram
+
+![Entities diagram](entities-diagram.png)
  
 # **Route done** - Register user 
 
