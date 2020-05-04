@@ -5,9 +5,10 @@ import { DayOfWeek } from "./dayOfWeek";
 import { Shift } from "./shift";
 
 export interface Entertainer extends User {
+    id: string,
     category: Category,
     daysofweekavailable: DayOfWeek[],
     shiftsavailable: Shift[],
     price: number,
-    events?: Event[]
+    events: Event[]
 }
