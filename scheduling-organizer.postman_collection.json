@@ -1,0 +1,222 @@
+{
+	"info": {
+		"_postman_id": "966c6e29-30ec-408f-a79f-88a15382a7ad",
+		"name": "scheduling organizer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "entertainer",
+			"item": [
+				{
+					"name": "create new entertainer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"email@domain.com\",\n    \"password\": \"some password\",\n    \"name\": \"some name\",\n    \"category\": \"CLOWN\",\n    \"shiftsavailable\": \"{MORNING,AFTERNOON}\",\n    \"daysofweekavailable\": \"{FRIDAY,SATURDAY,SUNDAY}\",\n    \"price\": 345.99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/schedulingorganizer/users?type=entertainer",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"schedulingorganizer",
+								"users"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "entertainer"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/schedulingorganizer/users?id=5",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"schedulingorganizer",
+								"users"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/schedulingorganizer/users?email=dcartman5@desdev.cn",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"schedulingorganizer",
+								"users"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "dcartman5@desdev.cn"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list available categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/schedulingorganizer/users/categories",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"schedulingorganizer",
+								"users",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "create new customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"customer@domain.com\",\n    \"password\": \"some password\",\n    \"name\": \"some customer name\"\n}\t",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/schedulingorganizer/users?type=customer",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"schedulingorganizer",
+								"users"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "customer"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "event",
+			"item": [
+				{
+					"name": "create new event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"some event\",\n    \"description\": \"some description\",\n    \"dateTime\": \"2019-10-31 03:00:00\",\n    \"duration\": 180,\n    \"place\": \"some place\",\n    \"isBlocker\": true,\n    \"isOwner\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/schedulingorganizer/events?entertainerid=11",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"schedulingorganizer",
+								"events"
+							],
+							"query": [
+								{
+									"key": "entertainerid",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "33a42cec-c18c-4791-9452-b4a78d5b6a19",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "60766b11-29cb-48f8-8fdd-392a545f158b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

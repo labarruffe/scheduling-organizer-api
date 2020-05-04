@@ -38,6 +38,10 @@ Project based on Nodejs.
 # Entities diagram
 
 ![Entities diagram](entities-diagram.png)
+
+# Postman collection
+
+`scheduling-organizer.postman_collection.json`
  
 # **Route done** - Register user 
 
