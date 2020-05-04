@@ -1,6 +1,28 @@
 # scheduling-organizer-api
 Project based on Nodejs.
 
+## Install dependencies
+`npm install`
+
+## Install knex globally for CLI
+`npm install knex -g`
+
+## Create .env file based on .env.sample file
+
+## Set environmental variables for DB connection
+`DATABASE_CLIENT = database client (pg, mysql, sqlite3)`
+
+`DATABASE_CONNECTION_STRING = database connection string`
+
+## Execute migrations command
+`knex migrate:latest`
+
+> :warning: **If necessary, execute migrations rollback command**: 
+`knex migrate:rollback`
+
+## Execute seeds command
+`knex seed:run`
+
 ## Build project
 `npm run build`
 
@@ -12,16 +34,22 @@ Project based on Nodejs.
 
 ## Debug project on network mode
 `npm run debug-net`
-
-# Register user
+ 
+# **Route done** - Register user 
 
 Used to register a new user as entertainer or customer.
 
-**URL** : `/schedulingorganizer/users`
+**URL** : `/schedulingorganizer/users?type=value`
 
 **Method** : `POST`
 
 **Authorization required** : NO
+
+**Query string**
+
+`type=customer`
+or
+`type=entertainer`
 
 **Data constraints**
 
@@ -30,13 +58,15 @@ Used to register a new user as entertainer or customer.
     "email": "[valid email address]",
     "password": "[password in plain text]",
     "name": "[valid string]",
-    "category": "[Clown, Magician, Juggler]",
-    "availability": "[availability object]",
-    "price": "[string double]"
+    "category": "[CLOWN, MAGICIAN, JUGGLER]",
+    "shiftsavailable": "[{MORNING,AFTERNOON,NIGHT}]",
+    "daysofweekavailable": "[{MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY}]",
+    "price": "[double]"
 }
 ```
 
 **Body as Customer**
+
 
 ```json
 {
@@ -53,18 +83,10 @@ Used to register a new user as entertainer or customer.
     "email": "email@domain.com",
     "password": "some password",
     "name": "some name",
-    "category": "Magician",
-    "availability": {
-        "daysOfWeek": [
-            "Wednesday",
-            "Friday"
-        ],
-        "Shift": [
-            "Morning",
-            "Night"
-        ]
-    },
-    "price": "345,99"
+    "category": "CLOWN",
+    "shiftsavailable": "{MORNING,AFTERNOON}",
+    "daysofweekavailable": "{FRIDAY,SATURDAY,SUNDAY}",
+    "price": 345.99
 }
 ```
 
@@ -75,14 +97,10 @@ Used to register a new user as entertainer or customer.
 **Content example**
 
 ```json
-{
-    "id": "1",
-    "email": "some_email@domain.com",
-    "name": "some name"
-}
+Created
 ```
 
-# Logon
+# **Route todo** - Logon
 
 Used to logon registered user.
 
@@ -122,15 +140,21 @@ Used to logon registered user.
 }
 ```
 
-# Consult entertainer agenda by email
+#  **Route done** - Consult entertainer agenda by email
 
-Used to consult entertainer agenda by email.
+Used to consult entertainer agenda by email or by id.
 
-**URL** : `/schedulingorganizer/users`
+**URL** : `/schedulingorganizer/users?[id=value or email=value]`
 
 **Method** : `GET`
 
 **Authorization required** : YES
+
+**Query string**
+
+`id=5`
+or
+`email=some_email@domain.com`
 
 ## Success Response
 
@@ -142,34 +166,52 @@ Used to consult entertainer agenda by email.
 
 ```json
 [
-    {
-        "email": "email@domain.com",
-        "name": "some name",
-        "category": "Magician",
-        "availability": {
-            "daysOfWeek": [
-                "Wednesday",
-                "Friday"
-            ],
-            "Shift": [
-                "Morning",
-                "Night"
-            ]
+{
+    "id": 5,
+    "name": "Brana Posvner",
+    "email": "bposvner4@unesco.org",
+    "password": "WFU6fAAa",
+    "category": "JUGGLER",
+    "shiftsavailable": "{MORNING,AFTERNOON,NIGHT}",
+    "daysofweekavailable": "{TUESDAY,WEDNESDAY,THURSDAY}",
+    "price": "170.08",
+    "events": [
+        {
+            "name": "augue a suscipit",
+            "description": "turpis adipiscing lorem vitae mattis nibh ligula nec sem",
+            "datetime": "2020-05-09T18:23:23.000Z",
+            "duration": 60,
+            "place": "4 Village Green Trail",
+            "isblocker": true,
+            "isowner": false
         },
-        "price": "345,99"
-    }
+        {
+            "name": "porttitor pede",
+            "description": "et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum",
+            "datetime": "2020-05-12T06:13:32.000Z",
+            "duration": 240,
+            "place": "07021 8th Drive",
+            "isblocker": true,
+            "isowner": true
+        }
+    ]
+}
 ]
 ```
 
-# Event
+# **Route done** - Event
 
 Used to schedule an event or party.
 
-**URL** : `/schedulingorganizer/events`
+**URL** : `/schedulingorganizer/events?entertainerid=6`
 
 **Method** : `POST`
 
 **Authorization required** : YES
+
+**Query string**
+
+`entertainerid=6`
 
 **Data constraints**
 
@@ -177,11 +219,11 @@ Used to schedule an event or party.
 {
     "name": "[string]",
     "description": "[string]",
-    "dateTime": "[date and time]",
-    "duration": "[number in minutes]",
+    "dateTime": "[timestamp]",
+    "duration": "[integer in minutes]",
     "place": "[string]",
     "isBlocker": "[boolean]",
-    "owner": "[user email]"
+    "isOwner": "[boolean]"
 }
 ```
 
@@ -189,13 +231,13 @@ Used to schedule an event or party.
 
 ```json
 {
-    "name": "some name",
+    "name": "some event",
     "description": "some description",
-    "dateTime": "2019-10-31T03:00:00.000Z",
-    "duration": 30,
+    "dateTime": "2019-10-31 03:00:00",
+    "duration": 180,
     "place": "some place",
     "isBlocker": true,
-    "owner": "email@domain.com",
+    "isOwner": true
 }
 ```
 
@@ -206,20 +248,11 @@ Used to schedule an event or party.
 **Content example**
 
 ```json
-{
-    "id": 7,
-    "name": "some name",
-    "description": "some description",
-    "dateTime": "2019-10-31T03:00:00.000Z",
-    "duration": 30,
-    "place": "some place",
-    "isBlocker": true,
-    "owner": "email@domain.com",
-}
+Created
 ```
-## Obs: Methods PUT and DELETE are allowed just if the user is the owner of the event
+## **Route todo** - Obs: Methods PUT and DELETE are allowed just if the user is the owner of the event
 
-# List all categories of entertainer
+# **Route done** - List all categories of entertainer
 
 **URL** : `/schedulingorganizer/users/categories`
 
@@ -234,24 +267,21 @@ Used to schedule an event or party.
 ```json
 [
     {
-        "id": 1,
-        "category": "Clown"
+        "category": "MAGICIAN"
     },
     {
-        "id": 2,
-      "category": "Magician"
+        "category": "CLOWN"
     },
     {
-        "id": 3,
-        "category": "Juggler"
+        "category": "JUGGLER"
     }
 ]
 ```
-# List entertainer users by category and availability
+# **Route todo** - List entertainer users by category and availability
 
 Used to search entertainer users by category and availability.
 
-**URL** : `/schedulingorganizer/users?category=Magician&datetime=2019-10-31T03:00:00.000Z`
+**URL** : `/schedulingorganizer/users?category=magician&datetime=2019-10-31T03:00:00.000Z`
 
 **Method** : `GET`
 
@@ -259,9 +289,11 @@ Used to search entertainer users by category and availability.
 
 **Categories:**
 
-`Clown`
-`Magician`
-`Juggler`
+`MAGICIAN`
+or
+`CLOWN`
+or
+`JUGGLER`
 
 ## Success Response
 
